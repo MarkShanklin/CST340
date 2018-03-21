@@ -234,46 +234,6 @@ char* sendData(char* sendBuff)
     valread = read( sock , buffer, 1024);
     mvprintw(22,1,"%s\n",buffer );
     return buffer;
-
-   /* int sockfd = 0, n = 0;
-    char recvBuff[32];
-
-    struct sockaddr_in serverAddr;
-    memset(recvBuff, '0',sizeof(recvBuff));
-
-    if((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
-    {
-        fprintf(stderr,"\n ERROR : COULDN'T CREATE SOCKET \n");
-        return "EXIT_FAILURE";
-    }
-
-    memset(&serverAddr, '0', sizeof(serverAddr));
-    serverAddr.sin_family = AF_INET;
-    serverAddr.sin_port = htons(PORT); 
-
-    if( connect(sockfd, (struct sockaddr *)&serverAddr, sizeof(serverAddr)) < 0)
-    {
-       fprintf(stderr,"\n ERROR : CONNECT FAILED \n");
-       return "EXIT_FAILURE";
-    }
-
-    write(sockfd, sendBuff, strlen(sendBuff));
-
-    while ( (n = read(sockfd, recvBuff, sizeof(recvBuff)-1)) > 0)
-    {
-        recvBuff[n] = 0;
-        if(fputs(recvBuff, stdout) == EOF)
-        {
-            fprintf(stderr,"\n ERROR : FPUTS ERROR\n");
-        }
-    } 
-    if(n < 0)
-    {
-        fprintf(stderr,"\n ERROR : READ ERROR \n");
-    }
-
-    return recvBuff;
-    */
 }
 
 void drawCalc() 
