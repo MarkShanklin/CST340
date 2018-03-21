@@ -96,6 +96,7 @@ int calcController()
                         if(event.x >= 18 && event.x < 23)
                         {
                             calcData[len] = '-';
+                            
                         }
                         if(event.x >= 24 && event.x < 29)
                         {

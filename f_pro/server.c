@@ -11,7 +11,9 @@
 #include <stdlib.h>
 #include <netinet/in.h>
 #include <string.h>
-#include <calcDriver.h>
+#include <sys/ioctl.h>
+#include "calcDriver.h"
+
 
 #define PORT 8080
 
