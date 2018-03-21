@@ -133,5 +133,7 @@ void calc(char * data)
         strcpy(data,"Error ioctl");
         return;
     }
-    itoa(cArg.rightArg,data,10);
+    snprintf(data,len, "%d", cArg.rightArg);
+    //itoa(cArg.rightArg,data,10);
+    return;
 }
