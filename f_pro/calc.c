@@ -218,7 +218,7 @@ char* sendData(char* sendBuff)
 
     memset(&serverAddr, '0', sizeof(serverAddr));
     serverAddr.sin_family = AF_INET;
-    serverAddr.sin_port = htons(50050); 
+    serverAddr.sin_port = htons(PORT); 
 
     if( connect(sockfd, (struct sockaddr *)&serverAddr, sizeof(serverAddr)) < 0)
     {
@@ -230,8 +230,6 @@ char* sendData(char* sendBuff)
 
     while ( (n = read(sockfd, recvBuff, sizeof(recvBuff)-1)) > 0)
     {
-        //do the test needed for the lab
-
         recvBuff[n] = 0;
         if(fputs(recvBuff, stdout) == EOF)
         {

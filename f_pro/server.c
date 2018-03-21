@@ -63,6 +63,8 @@ int main(int argc,char *argv[])
             write(sockfd, buff, strlen(buff));
             printf("\n%s\n",buff);
         }
+        write(sockfd, buff, strlen(buff));
+        printf("\n%s\n",buff);
         close(sockfd);
     }
     return 0;
