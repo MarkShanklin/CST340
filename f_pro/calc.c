@@ -202,7 +202,7 @@ int calcController()
     return !exit;
 }
 
-char* sendData(char sendBuff[32])
+char* sendData(char* sendBuff)
 {
     int sockfd = 0, n = 0;
     char recvBuff[32];
