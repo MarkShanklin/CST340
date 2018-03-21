@@ -125,6 +125,7 @@ int calcController()
                         if(event.x >= 24 && event.x < 29)
                         {
                             mvprintw(3,1,"                         ");
+                            calc
                             mvprintw(3,(X_MAX - 3)-len, calcData);
                         }
                     }
@@ -201,7 +202,7 @@ int calcController()
     return !exit;
 }
 
-sendData(char sendBuff[32])
+char* sendData(char sendBuff[32])
 {
     int sockfd = 0, n = 0;
     char recvBuff[32];
@@ -242,7 +243,7 @@ sendData(char sendBuff[32])
         fprintf(stderr,"\n ERROR : READ ERROR \n");
     }
 
-    return EXIT_SUCCESS;
+    return recvBuff;
 }
 
 void drawCalc() 
