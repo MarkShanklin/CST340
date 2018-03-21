@@ -18,6 +18,8 @@
 #define LISTENQ 1
 #define SERV_PORT 50050
 
+typedef enum {false, true} bool;
+
 int main(int argc,char *argv[])
 {
     int sockfd;
