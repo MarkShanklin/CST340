@@ -98,12 +98,12 @@ void calc(char * data)
             op = 1;
             correct++;
         }
-        if(data[i] == '+')
+        else if(data[i] == '+')
         {
             op = 2;
             correct++;
         }
-        if(data[i] == '-')
+        else if(data[i] == '-')
         {
             op = 3;
             correct++;
