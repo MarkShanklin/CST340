@@ -81,7 +81,7 @@ void calc(char * data)
     int op = 0;
     int correct = 0;
     char sendData[1024];
-    int len = strlen(sendData);
+    int len = strlen(data);
     int fd;
     char *file_name = "/dev/query";
     fd = open(file_name, O_RDWR);
@@ -117,7 +117,7 @@ void calc(char * data)
         if(correct == 1)
         {
             cArg.leftArg = atoi(sendData);
-            memset(sendData,0,len);
+            memset(sendData,0,strlen(sendData));
             cArg.ans = op;
         }
 
