@@ -59,57 +59,13 @@ int main(int argc, char const *argv[])
         perror("accept");
         exit(EXIT_FAILURE);
     }
-    valread = read( new_socket , buffer, 1024);
-    printf("%s\n",buffer );
-    send(new_socket , hello , strlen(hello) , 0 );
-    printf("Hello message sent\n");
-    return 0;
-
-    /*int sockfd;
-    int clientLen;
-
-    char buff[MAXLINE];
-
-    struct sockaddr_in serverAddr;
-    struct sockaddr_in clientAddr;
-
-    int listenfd = socket(AF_INET, SOCK_STREAM, 0);
-    memset((char*)&serverAddr, 0, sizeof(serverAddr));
-
-    serverAddr.sin_family = AF_INET;
-    serverAddr.sin_addr.s_addr = htonl(INADDR_ANY);
-    serverAddr.sin_port = htons(SERV_PORT);
-
-    if(bind(listenfd, (struct sockaddr *) &serverAddr, sizeof(serverAddr)) != 0)
+    while(1)
     {
-        perror("BIND ERROR!");
-        exit(-1);
+        valread = read( new_socket , buffer, 1024);
+        printf("%s\n",buffer );
+        send(new_socket , hello , strlen(hello) , 0 );
+        printf("Hello message sent\n");
     }
-
-    printf("\nBound to port: %d\n", SERV_PORT);
-
-    listen(listenfd, LISTENQ);
-    sockfd = accept(listenfd, (struct sockaddr *) &clientAddr, &clientLen);
-    int calc = true;
-    int readLen;
-
-    while(calc){
-
-        if((readLen = read(sockfd, buff, sizeof(buff))) == 0) {
-            printf("\n%s\n",buff);
-            calc = false;
-            break;
-        } 
-        else 
-        {
-            //calc(&buff);
-            write(sockfd, buff, strlen(buff));
-            printf("\n%s\n",buff);
-        }
-        write(sockfd, buff, strlen(buff));
-        printf("\n%s\n",buff);
-        close(sockfd);
-    }
-    return 0; */
+    return 0;
 };
 

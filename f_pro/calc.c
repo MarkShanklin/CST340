@@ -229,8 +229,8 @@ char* sendData(char* sendBuff)
         mvprintw(20,1,"\nConnection Failed \n");
         return -1;
     }
-    send(sock , hello , strlen(hello) , 0 );
-    mvprintw(21,1,"Hello message sent\n");
+    send(sock , sendBuff , strlen(sendBuff) , 0 );
+    mvprintw(21,1,"Data message sent\n");
     valread = read( sock , buffer, 1024);
     mvprintw(22,1,"%s\n",buffer );
     return buffer;
