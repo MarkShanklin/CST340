@@ -92,7 +92,7 @@ void calc(char * data)
     }
     query_arg_t cArg;
     int j = 0;
-    for(int i = 0; i < len; i++, j++)
+    for(int i = 0; i < len; i++)
     {
         if(data[i] == '*')
         {
@@ -112,7 +112,8 @@ void calc(char * data)
         else
         {
             sendData[j] = data[i];
-            printf("sendData: %c, data: %c\n", sendData[i], data[i]);
+            printf("sendData: %c, data: %c\n", sendData[j], data[i]);
+            j++;
         }
 
         if(correct == 1)
