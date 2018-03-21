@@ -123,12 +123,12 @@ void calc(char * data)
 
     cArg.rightArg = atoi(sendData);
 
-    if(ioctl(fd, QUERY_SET_VARIABLE, &cArg) == -1)
+    if(ioctl(fd, QUERY_SET_VARIABLES, &cArg) == -1)
     {
         strcpy(data,"Error ioctl");
         return;
     }
-    if(ioctl(fd, QUERY_GET_VARIABLE, &cArg) == -1)
+    if(ioctl(fd, QUERY_GET_VARIABLES, &cArg) == -1)
     {
         strcpy(data,"Error ioctl");
         return;
