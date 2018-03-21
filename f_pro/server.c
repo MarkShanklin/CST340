@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include <netinet/in.h>
 #include <string.h>
+#include <calcDriver.h>
 
 #define PORT 8080
 
@@ -21,7 +22,6 @@ int main(int argc, char const *argv[])
     int opt = 1;
     int addrlen = sizeof(address);
     char buffer[1024] = {0};
-    char *hello = "Hello from server";
       
     // Creating socket file descriptor
     if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0)
@@ -71,3 +71,63 @@ int main(int argc, char const *argv[])
     return 0;
 };
 
+void calc(char * data)
+{
+    int op = 0;
+    int correct = 0;
+    char sendData[1024];
+    int len = strlen(sendData)
+    int fd;
+    char *file_name = "/dev/query";
+    fd = open(file_name, O_RDWR);
+    if(fd == -1)
+    {
+        strcpy(data,"Error open");
+        return;
+    }
+    query_art_t cArg;
+    for(int i = 0; i < len; i++)
+    {
+        if(data[i] == '*')
+        {
+            op = 1;
+            correct++;
+        }
+        if(data[i] == '+')
+        {
+            op = 2;
+            correct++;
+        }
+        if(data[i] == '-')
+        {
+            op = 3;
+            correct++;
+        }
+        else
+        {
+            sendData[i] = data[i];
+        }
+
+        if(correct == 1)
+        {
+            cArg.leftArg = atoi(sendData);
+            sendData = {0};
+            cArd.ans = op;
+        }
+
+    }
+
+    cArg.rightArg = atoi(sendData);
+
+    if(ioctl(fd, QUERY_SET_VARIABLE, &cArg) == -1)
+    {
+        strcpy(data,"Error ioctl");
+        return;
+    }
+    if(ioctl(fd, QUERY_GET_VARIABLE, &cArg) == -1)
+    {
+        strcpy(data,"Error ioctl");
+        return;
+    }
+    itoa(cArg.rightArg,data,10);
+}
