@@ -92,7 +92,7 @@ void calc(char * data)
     }
     query_arg_t cArg;
     int j = 0;
-    for(int i = 0; i < len; i++ j++)
+    for(int i = 0; i < len; i++, j++)
     {
         if(data[i] == '*')
         {
