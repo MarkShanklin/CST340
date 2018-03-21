@@ -143,7 +143,7 @@ void calc(char * data)
     }
     memset(data, 0, strlen(data));
     printf("Answer: %d\n",cArg.ans);
-    snprintf(data,strlen(data), "%d", cArg.ans);
+    sprintf(data, "%d", cArg.ans);
     //itoa(cArg.rightArg,data,10);
     return;
 }
