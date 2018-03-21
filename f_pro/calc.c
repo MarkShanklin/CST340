@@ -213,7 +213,7 @@ char* sendData(char sendBuff[32])
     if((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
     {
         fprintf(stderr,"\n ERROR : COULDN'T CREATE SOCKET \n");
-        return EXIT_FAILURE;
+        return "EXIT_FAILURE";
     }
 
     memset(&serverAddr, '0', sizeof(serverAddr));
@@ -223,7 +223,7 @@ char* sendData(char sendBuff[32])
     if( connect(sockfd, (struct sockaddr *)&serverAddr, sizeof(serverAddr)) < 0)
     {
        fprintf(stderr,"\n ERROR : CONNECT FAILED \n");
-       return EXIT_FAILURE;
+       return "EXIT_FAILURE";
     }
 
     write(sockfd, sendBuff, strlen(sendBuff));
