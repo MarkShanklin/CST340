@@ -20,6 +20,7 @@
 
 void drawCalc();
 int calcController();
+char* sendData(char*);
 
 int main(void)
 {
