@@ -77,6 +77,7 @@ int main(int argc, char const *argv[])
 
 void calc(char * data)
 {
+    printf("calc called\n");
     int op = 0;
     int correct = 0;
     char sendData[1024];
@@ -109,6 +110,7 @@ void calc(char * data)
         }
         else
         {
+            printf("sendData: %c, data: %c\n", sendData[i], data[i]);
             sendData[i] = data[i];
         }
 
@@ -133,7 +135,8 @@ void calc(char * data)
         strcpy(data,"Error ioctl");
         return;
     }
-    snprintf(data,len, "%d", cArg.rightArg);
+    memset(data, 0, strlen(data));
+    snprintf(data,strlen(data), "%d", cArg.rightArg);
     //itoa(cArg.rightArg,data,10);
     return;
 }
