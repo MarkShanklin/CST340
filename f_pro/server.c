@@ -125,7 +125,7 @@ void calc(char * data)
         }
 
     }
-
+    printf("sendData: %s\n", sendData);
     cArg.rightArg = atoi(sendData);
     printf("Right: %d\n",cArg.rightArg);
     if(ioctl(fd, QUERY_SET_VARIABLES, &cArg) == -1)
