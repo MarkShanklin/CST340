@@ -14,8 +14,9 @@
 #include <sys/ioctl.h>
 #include "calcDriver.h"
 
-
 #define PORT 8080
+
+void calc(char *);
 
 int main(int argc, char const *argv[])
 {
@@ -78,7 +79,7 @@ void calc(char * data)
     int op = 0;
     int correct = 0;
     char sendData[1024];
-    int len = strlen(sendData)
+    int len = strlen(sendData);
     int fd;
     char *file_name = "/dev/query";
     fd = open(file_name, O_RDWR);
