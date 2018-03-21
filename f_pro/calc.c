@@ -6,8 +6,14 @@
 * Created By    : Mark Shanklin 
 ***********************************************************/
 #include<ncurses.h>
-#include<unistd.h>
-#include<string.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include <netdb.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <string.h>
 
 #define X_MAX 30
 #define PORT 50050
