@@ -4,7 +4,8 @@
 CC = gcc
 CFLAGS = -Wall -std='gnu11' -lncurses
 PROG = Calc
-SOURCES = $(shell echo *.c)
+#SOURCES = $(shell echo *.c)
+SOURCES = calc.c
 DEPS := $(shell echo *.h)
 OBJECTS = $(SOURCES:.c=.o)
 DEPENDS = depends.mk
