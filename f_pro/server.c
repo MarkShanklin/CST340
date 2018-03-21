@@ -53,6 +53,7 @@ int main(int argc,char *argv[])
     while(calc){
 
         if((readLen = read(sockfd, buff, sizeof(buff))) == 0) {
+            fprint("%s\n",buff);
             calc = false;
             break;
         } 
