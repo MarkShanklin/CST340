@@ -117,15 +117,16 @@ void calc(char * data)
         if(correct == 1)
         {
             cArg.leftArg = atoi(sendData);
+            printf("Left: %d\n", cArg.leftArg);
             memset(sendData,0,strlen(sendData));
             cArg.ans = op;
-            printf("OP: %d", op);
+            printf("OP: %d\n", op);
         }
 
     }
 
     cArg.rightArg = atoi(sendData);
-
+    printf("Right: %d\n",cArg.rightArg);
     if(ioctl(fd, QUERY_SET_VARIABLES, &cArg) == -1)
     {
         strcpy(data,"Error ioctl");
@@ -137,6 +138,7 @@ void calc(char * data)
         return;
     }
     memset(data, 0, strlen(data));
+    printf("Answer: %d\n",cArg.ans);
     snprintf(data,strlen(data), "%d", cArg.ans);
     //itoa(cArg.rightArg,data,10);
     return;
