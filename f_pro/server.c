@@ -12,6 +12,7 @@
 #include <netinet/in.h>
 #include <string.h>
 #include <sys/ioctl.h>
+#include <fcntl.h>
 #include "calcDriver.h"
 
 #define PORT 8080
@@ -88,7 +89,7 @@ void calc(char * data)
         strcpy(data,"Error open");
         return;
     }
-    query_art_t cArg;
+    query_arg_t cArg;
     for(int i = 0; i < len; i++)
     {
         if(data[i] == '*')
