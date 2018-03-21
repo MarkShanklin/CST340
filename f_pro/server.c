@@ -91,7 +91,8 @@ void calc(char * data)
         return;
     }
     query_arg_t cArg;
-    for(int i = 0; i < len; i++)
+    int j = 0;
+    for(int i = 0; i < len; i++ j++)
     {
         if(data[i] == '*')
         {
@@ -110,7 +111,7 @@ void calc(char * data)
         }
         else
         {
-            sendData[i] = data[i];
+            sendData[j] = data[i];
             printf("sendData: %c, data: %c\n", sendData[i], data[i]);
         }
 
@@ -120,6 +121,7 @@ void calc(char * data)
             printf("Left: %d\n", cArg.leftArg);
             memset(sendData,0,strlen(sendData));
             correct = 0;
+            j = 0;
             cArg.ans = op;
             printf("OP: %d\n", op);
         }
