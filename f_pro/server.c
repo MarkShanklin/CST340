@@ -42,8 +42,8 @@ int main(int argc,char *argv[])
         perror("BIND ERROR!");
         exit(-1);
     }
-    int bound = sock2port(listenfd);
-    printf("\nBound to port: %d", bound);
+
+    printf("\nBound to port: %d", SERV_PORT);
 
     listen(listenfd, LISTENQ);
     sockfd = accept(listenfd, (struct sockaddr *) &clientAddr, &clientLen);
