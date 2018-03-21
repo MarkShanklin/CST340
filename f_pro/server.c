@@ -53,7 +53,7 @@ int main(int argc,char *argv[])
     while(calc){
 
         if((readLen = read(sockfd, buff, sizeof(buff))) == 0) {
-            printf("%s\n",buff);
+            printf("\n%s\n",buff);
             calc = false;
             break;
         } 
@@ -61,6 +61,7 @@ int main(int argc,char *argv[])
         {
             //calc(&buff);
             write(sockfd, buff, strlen(buff));
+            printf("\n%s\n",buff);
         }
         close(sockfd);
     }
