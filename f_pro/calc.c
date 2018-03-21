@@ -6,23 +6,20 @@
 * Created By    : Mark Shanklin 
 ***********************************************************/
 #include<ncurses.h>
-#include <unistd.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
-#include <netdb.h>
 #include <sys/socket.h>
-#include <sys/types.h>
+#include <stdlib.h>
+#include <netinet/in.h>
 #include <string.h>
 
 #define X_MAX 30
-#define PORT 50050
+#define PORT 8080
 
 void drawCalc();
 int calcController();
 char* sendData(char*);
 
-int main(void)
+int main(int argc, char const *argv[])
 {
     initscr();
     cbreak();
@@ -185,7 +182,7 @@ int calcController()
                 calcData[len] = '6';
                 break;
             case '7':
-                calcData[len] = '7';
+                calcData[len] =  '7';
                 break;
             case '8':
                 calcData[len] = '8';
@@ -204,7 +201,41 @@ int calcController()
 
 char* sendData(char* sendBuff)
 {
-    int sockfd = 0, n = 0;
+    struct sockaddr_in address;
+    int sock = 0, valread;
+    struct sockaddr_in serv_addr;
+    char *hello = "Hello from client";
+    char buffer[1024] = {0};
+    if ((sock = socket(AF_INET, SOCK_STREAM, 0)) < 0)
+    {
+        mvprintw(20,1,"\n Socket creation error \n");
+        return -1;
+    }
+  
+    memset(&serv_addr, '0', sizeof(serv_addr));
+  
+    serv_addr.sin_family = AF_INET;
+    serv_addr.sin_port = htons(PORT);
+      
+    // Convert IPv4 and IPv6 addresses from text to binary form
+    if(inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr)<=0) 
+    {
+        mvprintw(20,1,"\nInvalid address/ Address not supported \n");
+        return -1;
+    }
+  
+    if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)
+    {
+        mvprintw(20,1,"\nConnection Failed \n");
+        return -1;
+    }
+    send(sock , hello , strlen(hello) , 0 );
+    mvprintw(21,1,"Hello message sent\n");
+    valread = read( sock , buffer, 1024);
+    mvprintw(22,1,"%s\n",buffer );
+    return buffer;
+
+   /* int sockfd = 0, n = 0;
     char recvBuff[32];
 
     struct sockaddr_in serverAddr;
@@ -242,6 +273,7 @@ char* sendData(char* sendBuff)
     }
 
     return recvBuff;
+    */
 }
 
 void drawCalc() 
