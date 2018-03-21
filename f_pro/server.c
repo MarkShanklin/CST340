@@ -5,50 +5,61 @@
 * Last Modified: Mon 19 Mar 2018 07:54 PM PDT
 * Created By: Mark Shanklin
 **********************************************************/
+#include <unistd.h>
 #include <stdio.h>
-
-
+#include <stdlib.h>
+#include <stdint.h>
+#include <netdb.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <string.h>
 
 #define MAXLINE 32
+#define LISTENQ 1
+#define SERV_PORT 50050
 
-int main(int argv,char argc[])
+int main(int argc,char *argv[])
 {
-    int listenfd;
     int sockfd;
     int clientLen;
-    struct sockaddr_in clientaddr;
-    struct sockaddr_in serveraddr;
-    char buf[MAXLINE];
 
-    listenfd = socket(AF_INET, SOCK_STREAM, 0);
-    memset(&serveraddr, 0, sizeof(serveraddr));
-    serveraddr.sin_family = AF_INET;
-    serveraddr.sin_addr.s_addr = htonl(INADDR_ANY);
-    serveraddr.sin_port = htons(SERV_PORT);
+    char buff[MAXLINE];
 
-    if(bind(listenfd, (struct sockaddr *) &serveraddr, sizeof(serveraddr)) != 0)
+    struct sockaddr_in serverAddr;
+    struct sockaddr_in clientAddr;
+
+    int listenfd = socket(AF_INET, SOCK_STREAM, 0);
+    memset((char*)&serverAddr, 0, sizeof(serverAddr));
+
+    serverAddr.sin_family = AF_INET;
+    serverAddr.sin_addr.s_addr = htonl(INADDR_ANY);
+    serverAddr.sin_port = htons(SERV_PORT);
+
+    if(bind(listenfd, (struct sockaddr *) &serverAddr, sizeof(serverAddr)) != 0)
     {
         perror("BIND ERROR!");
         exit(-1);
     }
+    int bound = sock2port(listenfd);
+    printf("\nBound to port: %d", bound);
 
     listen(listenfd, LISTENQ);
-    sockfd = accept(listenfd, (struct sockaddr *) &clientaddr, &clientLen);
+    sockfd = accept(listenfd, (struct sockaddr *) &clientAddr, &clientLen);
     int calc = true;
     int readLen;
 
     while(calc){
 
-        if((readLen = read(sockfd, buf, sizeof(buf))) == 0) {
+        if((readLen = read(sockfd, buff, sizeof(buff))) == 0) {
             calc = false;
-            close(sockfd);
             break;
         } 
         else 
         {
-            calc(&buf);
-            write(sockfd, buf, strlen(buf));
+            //calc(&buff);
+            write(sockfd, buff, strlen(buff));
         }
+        close(sockfd);
     }
     return 0;
 };
