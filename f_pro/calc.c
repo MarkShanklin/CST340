@@ -125,8 +125,7 @@ int calcController()
                         if(event.x >= 24 && event.x < 29)
                         {
                             mvprintw(3,1,"                         ");
-                            calc
-                            mvprintw(3,(X_MAX - 3)-len, calcData);
+                            mvprintw(3,(X_MAX - 3)-len, sendData(calcData));
                         }
                     }
                 }
