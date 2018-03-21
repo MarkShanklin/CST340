@@ -67,7 +67,7 @@ int main(int argc, char const *argv[])
         }
 
         valread = read( new_socket , buffer, 1024);
-        //function for calc
+        calc(&buffer);
         printf("%s\n",buffer );
         send(new_socket , buffer , strlen(buffer) , 0 );
         printf("Data message sent\n");
@@ -115,8 +115,8 @@ void calc(char * data)
         if(correct == 1)
         {
             cArg.leftArg = atoi(sendData);
-            sendData = {0};
-            cArd.ans = op;
+            memset(sendData,0,len);
+            cArg.ans = op;
         }
 
     }
