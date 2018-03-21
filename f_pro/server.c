@@ -110,8 +110,8 @@ void calc(char * data)
         }
         else
         {
-            printf("sendData: %c, data: %c\n", sendData[i], data[i]);
             sendData[i] = data[i];
+            printf("sendData: %c, data: %c\n", sendData[i], data[i]);
         }
 
         if(correct == 1)
@@ -119,6 +119,7 @@ void calc(char * data)
             cArg.leftArg = atoi(sendData);
             memset(sendData,0,strlen(sendData));
             cArg.ans = op;
+            printf("OP: %d", op);
         }
 
     }
@@ -136,7 +137,7 @@ void calc(char * data)
         return;
     }
     memset(data, 0, strlen(data));
-    snprintf(data,strlen(data), "%d", cArg.rightArg);
+    snprintf(data,strlen(data), "%d", cArg.ans);
     //itoa(cArg.rightArg,data,10);
     return;
 }
