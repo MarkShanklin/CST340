@@ -119,6 +119,7 @@ void calc(char * data)
             cArg.leftArg = atoi(sendData);
             printf("Left: %d\n", cArg.leftArg);
             memset(sendData,0,strlen(sendData));
+            correct = 0;
             cArg.ans = op;
             printf("OP: %d\n", op);
         }
