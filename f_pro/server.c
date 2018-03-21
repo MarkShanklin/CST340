@@ -43,7 +43,7 @@ int main(int argc,char *argv[])
         exit(-1);
     }
 
-    printf("\nBound to port: %d", SERV_PORT);
+    printf("\nBound to port: %d\n", SERV_PORT);
 
     listen(listenfd, LISTENQ);
     sockfd = accept(listenfd, (struct sockaddr *) &clientAddr, &clientLen);
