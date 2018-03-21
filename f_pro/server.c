@@ -67,7 +67,7 @@ int main(int argc, char const *argv[])
         }
 
         valread = read( new_socket , buffer, 1024);
-        calc(&buffer);
+        calc(buffer);
         printf("Buffer: %s\n", buffer );
         send(new_socket , buffer , strlen(buffer) , 0 );
         printf("Data message sent\n");
