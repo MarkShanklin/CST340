@@ -65,7 +65,7 @@ int aFill()
 
 int main(int argc, char const *argv[])
 {
-
+    int command = 0;
 
     while ((command = getopt(argc, argv, "zash")) != -1) 
     {
