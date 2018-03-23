@@ -73,7 +73,7 @@ int aFill()
     return 0;
 }
 
-int main(int argc, char const *argv[])
+int main(int argc, char *const *argv)
 {
     int command = 0;
 
@@ -85,10 +85,10 @@ int main(int argc, char const *argv[])
             nullFill();
             break;
         case 'a':
-            printf("Buffer Status: %d\n", aFill());
+            aFill();
             break;
         case 's':
-            bufferStatus();
+            printf("Buffer Status: %d\n", bufferStatus());
             break;
         case 'h':
             printf("This program is used to "

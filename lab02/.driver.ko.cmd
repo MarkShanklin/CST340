@@ -1,0 +1,1 @@
+cmd_/home/mark.shanklin/CST340/lab02/driver.ko := ld -r -m elf_x86_64 -T /usr/src/kernels/3.10.0-327.10.1.el7.x86_64/scripts/module-common.lds --build-id  -o /home/mark.shanklin/CST340/lab02/driver.ko /home/mark.shanklin/CST340/lab02/driver.o /home/mark.shanklin/CST340/lab02/driver.mod.o
