@@ -6,6 +6,8 @@
 * Created By: Mark Shanklin
 **********************************************************/
 #include <getopt.h>
+#include <unistd.h>
+
 
 int nullFill()
 {
