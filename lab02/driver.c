@@ -103,7 +103,7 @@ static long my_driver(struct file *f, unsigned int cmd, unsigned long arg)
         case QUERY_CLR_VARIABLES:
             leftArg = 0;
             rightArg = 0;
-            ans = 0;
+            answer = 0;
             break;
         case QUERY_SET_VARIABLES:
             if (copy_from_user(&q, (query_arg_t *)arg, sizeof(query_arg_t)))
