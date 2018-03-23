@@ -15,6 +15,8 @@
  
 #include "driver.h"
 
+static query_arg_t args;
+
 int nullFill()
 {
     char *file_name = "/dev/query";
