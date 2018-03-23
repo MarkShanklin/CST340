@@ -24,7 +24,7 @@ int nullFill()
     fd = open(file_name, O_RDWR);
     if(ioctl(fd, QUERY_NULL_FILL, &args) == -1)
     {
-        perror("Driver Null Fill Error.")
+        perror("Driver Null Fill Error.");
     }
     
     close(fd);
@@ -65,7 +65,7 @@ int aFill()
     fd = open(file_name, O_RDWR);
     if(ioctl(fd, QUERY_A_FILL, &args) == -1)
     {
-        perror("Driver A Fill Error.")
+        perror("Driver A Fill Error.");
     }
 
 
