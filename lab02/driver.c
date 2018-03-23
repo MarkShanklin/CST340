@@ -112,7 +112,7 @@ static long my_driver(struct file *f, unsigned int cmd, unsigned long arg)
             }
             leftArg = q.leftArg;
             rightArg = q.rightArg;
-            strcpy(buffer, q.buff);
+            strcpy(buffer, q.buffer);
         case QUERY_NULL_FILL:
             memset(buffer, 0, 512);
             break;
