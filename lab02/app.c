@@ -31,7 +31,7 @@ int bufferStatus()
     fd = open(file_name, O_RDWR);
     int bufStat = ioctl(fd, QUERY_STATUS_BUFFER, &args);
     switch(bufStat)
-    {
+    {dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
         case -1:
             perror("Driver Status Failure");
             break;
