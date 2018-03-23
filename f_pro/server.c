@@ -14,7 +14,7 @@
 #include <string.h>
 #include <sys/ioctl.h>
 #include <fcntl.h>
-#include "calcDriver.h"
+#include "driver.h"
 
 #define PORT 8080
 
@@ -124,7 +124,7 @@ void calc(char * data)
             memset(sendData,0,strlen(sendData));
             correct = 0;
             j = 0;
-            cArg.ans = op;
+            cArg.answer = op;
             printf("OP: %d\n", op);
         }
 
@@ -145,6 +145,5 @@ void calc(char * data)
     memset(data, 0, strlen(data));
     printf("Answer: %d\n",cArg.ans);
     sprintf(data, "%d", cArg.ans);
-    //itoa(cArg.rightArg,data,10);
     return;
 }
